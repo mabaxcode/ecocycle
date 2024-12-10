@@ -22,8 +22,9 @@ class Admin extends CI_Controller {
 
 	public function index()
 	{	
-		$data['content']      = 'admin/dashboard';
-		$data['add_script']   = 'admin/script';
+		$data['content']      = 'admin/admin-dashboard';
+		$data['add_script']   = 'admin/admin-script';
+		$data['menu']         = 'admin/admin-menu';
 
 		$this->load->view('master-ui/main', $data);
 	}
