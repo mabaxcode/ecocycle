@@ -6,4 +6,9 @@ class Main extends CI_Controller {
 	{
 		$this->load->view('main');
 	}
+
+	function register_page($data=false)
+	{
+		$this->load->view('register_page', $data);
+	}
 }

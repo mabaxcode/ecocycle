@@ -71,7 +71,7 @@
             <h2>EcoCycle</h2>
             <p>EcoCycle is an innovative recycling management platform designed to enhance efficiency and collaboration in recycling center operations.</p>
             <div class="d-flex">
-              <a href="#about" class="btn-get-started">Get Started</a>
+              <a href="<?=base_url('main/register_page')?>" class="btn-get-started">Get Started</a>
               <a href="" class="btn-watch-video d-flex align-items-center"><i class="bi bi-search-circle"></i><span>Find your nearest centre</span></a>
             </div>
           </div>
