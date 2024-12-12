@@ -725,7 +725,7 @@
 									<!--end::Menu item-->
 									<!--begin::Menu item-->
 									<div class="menu-item px-5">
-										<a href="authentication/layouts/corporate/sign-in.html" class="menu-link px-5">Sign Out</a>
+										<a href="<?=base_url('logout/log_out')?>" class="menu-link px-5">Sign Out</a>
 									</div>
 									<!--end::Menu item-->
 								</div>
@@ -4167,7 +4167,7 @@
 		<!--end::Modal - Invite Friend-->
 		<!--end::Modals-->
 		<!--begin::Javascript-->
-		<script>var hostUrl = "<?=base_url()?>assets/";</script>
+		<script>var base_url = "<?=base_url()?>";</script>
 		<!--begin::Global Javascript Bundle(mandatory for all pages)-->
 		<script src="<?=base_url()?>assets/plugins/global/plugins.bundle.js"></script>
 		<script src="<?=base_url()?>assets/js/scripts.bundle.js"></script>
@@ -4196,6 +4196,13 @@
 		<script src="<?=base_url()?>assets/js/custom/utilities/modals/users-search.js"></script>
 		<!--end::Custom Javascript-->
 		<!--end::Javascript-->
+
+		<?
+		if (isset($add_script)) {
+			$this->load->view($add_script);
+		}
+		?>
+
 	</body>
 	<!--end::Body-->
 </html>
