@@ -95,6 +95,36 @@ class Manager extends CI_Controller {
 		$this->load->view('manager/modal-view-centre-detail', $data);
 	}
 
+	function view_staff_details($data=false)
+	{
+		$id = $this->input->post('id');
+
+		$data['users'] = get_any_table_row(array('id' => $id), 'users');
+		$data['staff'] = get_any_table_row(array('staff_id' => $id), 'staff');
+
+		// $data['city'] = get_ref_desc($data['centre']['city'], 'city');
+		// $data['state'] = get_ref_desc($data['centre']['state'], 'state');
+
+		$this->load->view('manager/modal-view-staff-detail', $data);
+	}
+
+	function process_event($data=false)
+	{
+		$id = $this->input->post('id');
+
+		$data['event'] = get_any_table_row(array('id' => $id), 'event');
+		// $data['staff'] = get_any_table_row(array('staff_id' => $id), 'staff');
+
+		// $data['city'] = get_ref_desc($data['centre']['city'], 'city');
+		// $data['state'] = get_ref_desc($data['centre']['state'], 'state');
+
+		$data['centre'] = get_any_table_row(array('id' => $data['event']['centre_id']), 'centre');
+
+		$data['users'] = get_any_table_row(array('id' => $data['event']['request_by']), 'users');
+
+		$this->load->view('manager/modal-process-event', $data);
+	}
+
 	function complete_staff_register($data=false)
 	{
 		$data['staff_id'] = $this->input->post('id');
@@ -166,6 +196,12 @@ class Manager extends CI_Controller {
 
 			$centre_name = get_any_table_row(array('id' => $key['centre_id']), 'centre');
 
+			$staff_id = $key['staff_id'];
+
+			// $action = "<a href='#' class='btn btn-light btn-primary btn-flex btn-center btn-sm detail-staff' data-formid=\"$key['staff_id']\">Details</a>";
+
+			$action = "<button class=\"btn btn-light btn-primary btn-flex btn-center btn-sm detail-staff\" data-init=\"$staff_id\">Details</button>";
+
 			#Final Data
 				$aaData[] = array(
 					'no'		=>	$no++, 
@@ -173,7 +209,7 @@ class Manager extends CI_Controller {
 					'email'		=>	$key['email'],
 					'phone_no'	=>	$key['phone_no'], 
 					'status'	=>	'<span class="badge badge-info fw-bold badge-lg">' . $centre_name['name'] . "</span>",
-					'action'	=>	'', 
+					'action'	=>	$action, 
 				);
 				
 
@@ -258,5 +294,25 @@ class Manager extends CI_Controller {
 		$data['events'] = get_any_table_array(array('manager_id' => $this->user_id, 'status' => '0' ), 'event');
 
 		$this->load->view('master-ui/main', $data);
+	}
+
+	function do_approval_event($data=false)
+	{
+		$post = $this->input->post();
+		// echo "<pre>"; print_r($post); echo "</pre>";
+
+		$update = array('status' => $post['decision']);
+
+		$where = array('id' => $post['id']);
+
+		$update = update_any_table($update, $where, 'event');
+
+		if ($update == true) {
+			// code...
+			echo encode(array('status' => true, 'msg' => 'Successfully saved !'));
+		} else {
+			echo encode(array('status' => false, 'msg' => 'Failed to save !'));
+		}
+
 	}
 }

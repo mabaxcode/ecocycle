@@ -22,7 +22,7 @@
 										<!--begin:Menu link-->
 										<span class="menu-link">
 											<span class="menu-icon">
-												<i class="ki-outline ki-home-2 fs-2"></i>
+												<i class="ki-outline ki-abstract-26 fs-2"></i>
 											</span>
 											<span class="menu-title">My Application</span>
 											<span class="menu-arrow"></span>

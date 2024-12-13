@@ -128,7 +128,7 @@
 														<th class="min-w-125px">Email</th>
 														<th class="min-w-125px">Phone No.</th>
 														<th class="min-w-125px">Centre</th>
-														<th class="text-end min-w-100px">Actions</th>
+														<th class="min-w-100px">Actions</th>
 													</tr>
 												</thead>
 												<?/*

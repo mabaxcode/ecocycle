@@ -242,6 +242,46 @@ $(document).on('click', '.detail-register', function(e){
     });
 });
 
+$(document).on('click', '.detail-staff', function(e){
+    var id = $(this).data('init');
+    e.preventDefault();
+    $.ajax({
+        url: base_url + 'manager/view_staff_details',
+        type: "POST",
+        data: {id:id},
+        async: true,
+        success: function( response ){
+            $('#modal_complete_reg').html(response);
+            $('#modal_complete_reg').modal('show');
+        },
+        error: function(data){
+            // console.log(data);
+        },
+    });
+});
+
+$(document).on('click', '.procees-event', function(e){
+    var id = $(this).data('init');
+    e.preventDefault();
+    $.ajax({
+        url: base_url + 'manager/process_event',
+        type: "POST",
+        data: {id:id},
+        async: true,
+        success: function( response ){
+            $('#modal_complete_reg').html(response);
+            $('#modal_complete_reg').modal('show');
+        },
+        error: function(data){
+            // console.log(data);
+        },
+    });
+});
+
+
+
+
+
 // $(document).on('click', '.complete-register-vendor', function(e){
 //     var id = $(this).data('init');
 //     e.preventDefault();
@@ -1498,5 +1538,123 @@ $(document).on('click', '.btn-register-staff', function (e) {
     });
 
 });
+
+
+
+</script>
+
+<script type="text/javascript">
+    var validateStaffCompleteProcess;
+function completeStaffRegisEvt(formID)
+{   
+    const fileForm = document.getElementById(formID);
+    validateStaffCompleteProcess = FormValidation.formValidation(
+    fileForm,
+    {
+        fields: {
+            decision: {
+                validators: {
+                    notEmpty: {
+                        message: 'Approval decision is required',
+                    }
+                }
+            },
+        },
+        plugins: {
+            trigger: new FormValidation.plugins.Trigger,
+            bootstrap: new FormValidation.plugins.Bootstrap5({
+                rowSelector: ".fv-row",
+                eleInvalidClass: "",
+                eleValidClass: ""
+            })
+        }
+    }
+    );
+}
+
+$(document).on('click', '.btn-evt-process', function (e) {
+    e.preventDefault();
+    validateStaffCompleteProcess.validate().then(function(status) {
+
+        if (status == 'Valid') {
+
+            var newStaffFormDataProcess = $('#complete_staff_regis_data_evt').serialize();
+
+          
+               
+                Swal.fire({
+                  // title: "Are you sure?",
+                  text: "Are you sure ?",
+                  icon: "warning",
+                  showCancelButton: true,
+                  confirmButtonColor: "#3085d6",
+                  cancelButtonColor: "#d33",
+                  confirmButtonText: "Yes"
+                }).then((result) => {
+                  if (result.isConfirmed) {
+
+
+
+                        $.ajax({
+                                url: base_url + 'manager/do_approval_event',
+                                type: "POST",
+                                data: newStaffFormDataProcess,
+                                dataType: "json",
+                                async: true,
+                                success: function( response ) {
+                                    // console.log(response);
+                                    if (response.status == true) {
+                                        Swal.fire({
+                                            text: response.msg,
+                                            icon: "success",
+                                            buttonsStyling: !1,
+                                            confirmButtonText: "Ok, got it!",
+                                            customClass: {
+                                                confirmButton: "btn btn-primary"
+                                            }
+                                        }).then((function(t) {
+                                            if (t.isConfirmed) {
+                                                $("#modal_complete_reg").modal('hide');
+                                                location.reload();
+                                            }
+                                        }))
+                                    } else {
+                                        Swal.fire({
+                                            text: response.msg,
+                                            icon: "error",
+                                            buttonsStyling: !1,
+                                            confirmButtonText: "Ok, got it!",
+                                            customClass: {
+                                                confirmButton: "btn btn-primary"
+                                            }
+                                        })
+                                    }
+                                }
+                            });
+
+                    
+                  }
+                });
+         
+
+            
+
+            
+
+        } else {
+            swal.fire({
+                text: "Before proceeding, please ensure that all mandatory fields have been completed.",
+                icon: "error",
+                buttonsStyling: false,
+                confirmButtonText: "Ok, got it!",
+                customClass: {
+                    confirmButton: "btn font-weight-bold btn-light-primary"
+                }
+            })
+        }
+    });
+
+});
+
 
 </script>

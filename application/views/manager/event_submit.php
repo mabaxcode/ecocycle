@@ -82,7 +82,7 @@
 														<td class="d-flex align-items-center">
 															<!--begin::User details-->
 															<div class="d-flex flex-column">
-																<a href="apps/user-management/users/view.html" class="text-gray-800 text-hover-primary mb-1"><?=$key['name']?></a>
+																<a href="apps/user-management/users/view.html" class="text-gray-800 text-hover-primary mb-1"><?=strtoupper($key['name'])?></a>
 																<!-- <span>smith@kpmg.com</span> -->
 															</div>
 															<!--begin::User details-->
@@ -95,7 +95,7 @@
 															<div class="badge badge-warning fw-bold badge-lg">Pending Approval</div>
 														</td>
 														<td class="text-end">
-															<a href="#" class="btn btn-light btn-primary btn-flex btn-center btn-sm detail-register" data-kt-menu-placement="bottom-end" data-init="<?=$key['id']?>">Process</a>
+															<a href="#" class="btn btn-light btn-primary btn-flex btn-center btn-sm procees-event" data-init="<?=$key['id']?>">Process</a>
 															<!-- <a href="#" class="btn btn-light btn-danger btn-flex btn-center btn-sm" data-kt-menu-placement="bottom-end">Delete</a> -->
 														</td>
 													</tr>
