@@ -8,7 +8,7 @@
 						<!--begin::Modal header-->
 						<div class="modal-header" id="kt_modal_new_address_header">
 							<!--begin::Modal title-->
-							<h2>Event Approval Processing</h2>
+							<h2>Event Details</h2>
 							<!--end::Modal title-->
 							<!--begin::Close-->
 							<div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
@@ -97,18 +97,7 @@
 						<!--end::Col-->
 					</div>
 
-								<div class="d-flex flex-column mb-5 fv-row">
-									<!--begin::Label-->
-									<label class="required fs-5 fw-semibold mb-2">Approval</label>
-									<!--end::Label-->
-									<!--begin::Input-->
-									<select name="decision" class="form-control">
-											<option value="">Please Select Decision</option>
-											<option value="1">Approve & Publish</option>
-											<option value="2">Reject</option>
-										</select>
-									<!--end::Input-->
-								</div>
+								
 
 								<!--end::Input group-->
 								<!--begin::Input group-->
@@ -121,14 +110,10 @@
 						<!--begin::Modal footer-->
 						<div class="modal-footer flex-center">
 							<!--begin::Button-->
-							<button type="reset" data-bs-dismiss="modal" class="btn btn-light me-3">Discard</button>
+							<button type="reset" data-bs-dismiss="modal" class="btn btn-light me-3">Close</button>
 							<!--end::Button-->
 							<!--begin::Button-->
-							<button type="submit" class="btn btn-primary btn-evt-process">
-								<span class="indicator-label">Register</span>
-								<span class="indicator-progress">Please wait... 
-								<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-							</button>
+			
 							<!--end::Button-->
 						</div>
 						<!--end::Modal footer-->

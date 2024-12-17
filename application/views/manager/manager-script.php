@@ -278,6 +278,24 @@ $(document).on('click', '.procees-event', function(e){
     });
 });
 
+$(document).on('click', '.procees-inventory', function(e){
+    var id = $(this).data('init');
+    e.preventDefault();
+    $.ajax({
+        url: base_url + 'manager/process_inventory',
+        type: "POST",
+        data: {id:id},
+        async: true,
+        success: function( response ){
+            $('#modal_complete_reg').html(response);
+            $('#modal_complete_reg').modal('show');
+        },
+        error: function(data){
+            // console.log(data);
+        },
+    });
+});
+
 
 
 
@@ -1654,6 +1672,278 @@ $(document).on('click', '.btn-evt-process', function (e) {
         }
     });
 
+});
+
+
+</script>
+
+
+<script type="text/javascript">
+    var validateStaffCompleteProcessInventory;
+function completeStaffRegisInventory(formID)
+{   
+    const fileFormInvent = document.getElementById(formID);
+    validateStaffCompleteProcessInventory = FormValidation.formValidation(
+    fileFormInvent,
+    {
+        fields: {
+            decision: {
+                validators: {
+                    notEmpty: {
+                        message: 'Approval decision is required',
+                    }
+                }
+            },
+        },
+        plugins: {
+            trigger: new FormValidation.plugins.Trigger,
+            bootstrap: new FormValidation.plugins.Bootstrap5({
+                rowSelector: ".fv-row",
+                eleInvalidClass: "",
+                eleValidClass: ""
+            })
+        }
+    }
+    );
+}
+
+$(document).on('click', '.btn-invent-deci', function (e) {
+    e.preventDefault();
+    validateStaffCompleteProcessInventory.validate().then(function(status) {
+
+        if (status == 'Valid') {
+
+            var newStaffFormDataProcessInvent = $('#complete_staff_regis_data_inventory').serialize();
+
+          
+               
+                Swal.fire({
+                  // title: "Are you sure?",
+                  text: "Are you sure ?",
+                  icon: "warning",
+                  showCancelButton: true,
+                  confirmButtonColor: "#3085d6",
+                  cancelButtonColor: "#d33",
+                  confirmButtonText: "Yes"
+                }).then((result) => {
+                  if (result.isConfirmed) {
+
+
+
+                        $.ajax({
+                                url: base_url + 'manager/do_approval_inventory',
+                                type: "POST",
+                                data: newStaffFormDataProcessInvent,
+                                dataType: "json",
+                                async: true,
+                                success: function( response ) {
+                                    // console.log(response);
+                                    if (response.status == true) {
+                                        Swal.fire({
+                                            text: response.msg,
+                                            icon: "success",
+                                            buttonsStyling: !1,
+                                            confirmButtonText: "Ok, got it!",
+                                            customClass: {
+                                                confirmButton: "btn btn-primary"
+                                            }
+                                        }).then((function(t) {
+                                            if (t.isConfirmed) {
+                                                $("#modal_complete_reg").modal('hide');
+                                                location.reload();
+                                            }
+                                        }))
+                                    } else {
+                                        Swal.fire({
+                                            text: response.msg,
+                                            icon: "error",
+                                            buttonsStyling: !1,
+                                            confirmButtonText: "Ok, got it!",
+                                            customClass: {
+                                                confirmButton: "btn btn-primary"
+                                            }
+                                        })
+                                    }
+                                }
+                            });
+
+                    
+                  }
+                });
+         
+
+            
+
+            
+
+        } else {
+            swal.fire({
+                text: "Before proceeding, please ensure that all mandatory fields have been completed.",
+                icon: "error",
+                buttonsStyling: false,
+                confirmButtonText: "Ok, got it!",
+                customClass: {
+                    confirmButton: "btn font-weight-bold btn-light-primary"
+                }
+            })
+        }
+    });
+
+});
+
+
+
+
+$(document).on('click', '.reject-post', function (e) {
+    e.preventDefault();
+
+      
+
+            var id = $(this).data('init');
+
+          
+               
+                Swal.fire({
+                  // title: "Are you sure?",
+                  text: "Are you sure want to reject this blog post ?",
+                  icon: "warning",
+                  showCancelButton: true,
+                  confirmButtonColor: "#3085d6",
+                  cancelButtonColor: "#d33",
+                  confirmButtonText: "Yes"
+                }).then((result) => {
+                  if (result.isConfirmed) {
+
+
+
+                        $.ajax({
+                                url: base_url + 'manager/reject_blog',
+                                type: "POST",
+                                data: {id:id},
+                                dataType: "json",
+                                async: true,
+                                success: function( response ) {
+                                    // console.log(response);
+                                    if (response.status == true) {
+                                        Swal.fire({
+                                            text: response.msg,
+                                            icon: "success",
+                                            buttonsStyling: !1,
+                                            confirmButtonText: "Ok, got it!",
+                                            customClass: {
+                                                confirmButton: "btn btn-primary"
+                                            }
+                                        }).then((function(t) {
+                                            if (t.isConfirmed) {
+                                                // $("#modal_complete_reg").modal('hide');
+                                                // location.reload();
+                                                window.location.href = base_url + 'manager/blog_post'; 
+                                            }
+                                        }))
+                                    } else {
+                                        Swal.fire({
+                                            text: response.msg,
+                                            icon: "error",
+                                            buttonsStyling: !1,
+                                            confirmButtonText: "Ok, got it!",
+                                            customClass: {
+                                                confirmButton: "btn btn-primary"
+                                            }
+                                        })
+                                    }
+                                }
+                            });
+
+                    
+                  }
+                });
+         
+
+});
+
+$(document).on('click', '.approve-post', function (e) {
+    e.preventDefault();
+
+      
+
+            var id = $(this).data('init');
+
+          
+               
+                Swal.fire({
+                  // title: "Are you sure?",
+                  text: "Are you sure want to approve and publish this blog post ?",
+                  icon: "warning",
+                  showCancelButton: true,
+                  confirmButtonColor: "#3085d6",
+                  cancelButtonColor: "#d33",
+                  confirmButtonText: "Yes"
+                }).then((result) => {
+                  if (result.isConfirmed) {
+
+
+
+                        $.ajax({
+                                url: base_url + 'manager/approve_blog',
+                                type: "POST",
+                                data: {id:id},
+                                dataType: "json",
+                                async: true,
+                                success: function( response ) {
+                                    // console.log(response);
+                                    if (response.status == true) {
+                                        Swal.fire({
+                                            text: response.msg,
+                                            icon: "success",
+                                            buttonsStyling: !1,
+                                            confirmButtonText: "Ok, got it!",
+                                            customClass: {
+                                                confirmButton: "btn btn-primary"
+                                            }
+                                        }).then((function(t) {
+                                            if (t.isConfirmed) {
+                                                // $("#modal_complete_reg").modal('hide');
+                                                // location.reload();
+                                                window.location.href = base_url + 'manager/blog_post'; 
+                                            }
+                                        }))
+                                    } else {
+                                        Swal.fire({
+                                            text: response.msg,
+                                            icon: "error",
+                                            buttonsStyling: !1,
+                                            confirmButtonText: "Ok, got it!",
+                                            customClass: {
+                                                confirmButton: "btn btn-primary"
+                                            }
+                                        })
+                                    }
+                                }
+                            });
+
+                    
+                  }
+                });
+         
+
+});
+
+$(document).on('click', '.view-event', function(e){
+    var id = $(this).data('init');
+    e.preventDefault();
+    $.ajax({
+        url: base_url + 'manager/view_event',
+        type: "POST",
+        data: {id:id},
+        async: true,
+        success: function( response ){
+            $('#modal_complete_reg').html(response);
+            $('#modal_complete_reg').modal('show');
+        },
+        error: function(data){
+            // console.log(data);
+        },
+    });
 });
 
 

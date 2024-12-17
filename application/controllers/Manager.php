@@ -125,6 +125,23 @@ class Manager extends CI_Controller {
 		$this->load->view('manager/modal-process-event', $data);
 	}
 
+	function process_inventory($data=false)
+	{
+		$id = $this->input->post('id');
+
+		$data['inventory'] = get_any_table_row(array('id' => $id), 'inventory');
+		// $data['staff'] = get_any_table_row(array('staff_id' => $id), 'staff');
+
+		// $data['city'] = get_ref_desc($data['centre']['city'], 'city');
+		// $data['state'] = get_ref_desc($data['centre']['state'], 'state');
+
+		$data['centre'] = get_any_table_row(array('id' => $data['inventory']['centre_id']), 'centre');
+
+		$data['users'] = get_any_table_row(array('id' => $data['inventory']['request_by']), 'users');
+
+		$this->load->view('manager/modal-process-inventory', $data);
+	}
+
 	function complete_staff_register($data=false)
 	{
 		$data['staff_id'] = $this->input->post('id');
@@ -296,6 +313,21 @@ class Manager extends CI_Controller {
 		$this->load->view('master-ui/main', $data);
 	}
 
+	function inventory_submit($data=false)
+	{
+		$data['content']      = 'manager/inventory_submit';
+		$data['add_script']   = 'manager/manager-script';
+		$data['menu']         = 'manager/manager-menu';
+
+		//$data['ref_city'] = get_ref_list(array('module' => 'city'), 'ref_code');
+
+		//$data['ref_state'] = get_ref_list(array('module' => 'state'), 'ref_code');
+
+		$data['inventorys'] = get_any_table_array(array('manager_id' => $this->user_id, 'status' => '0' ), 'inventory');
+
+		$this->load->view('master-ui/main', $data);
+	}
+
 	function do_approval_event($data=false)
 	{
 		$post = $this->input->post();
@@ -314,5 +346,139 @@ class Manager extends CI_Controller {
 			echo encode(array('status' => false, 'msg' => 'Failed to save !'));
 		}
 
+	}
+
+	function do_approval_inventory($data=false)
+	{
+		$post = $this->input->post();
+		// echo "<pre>"; print_r($post); echo "</pre>";
+
+		$update = array('status' => $post['decision']);
+
+		$where = array('id' => $post['id']);
+
+		$update = update_any_table($update, $where, 'inventory');
+
+		if ($update == true) {
+			// code...
+			echo encode(array('status' => true, 'msg' => 'Successfully saved !'));
+		} else {
+			echo encode(array('status' => false, 'msg' => 'Failed to save !'));
+		}
+
+	}
+
+	function blog_post($data=false)
+	{
+		$data['content']      = 'manager/blog_post';
+		$data['add_script']   = 'manager/manager-script';
+		$data['menu']         = 'manager/manager-menu';
+
+		//$data['ref_city'] = get_ref_list(array('module' => 'city'), 'ref_code');
+
+		//$data['ref_state'] = get_ref_list(array('module' => 'state'), 'ref_code');
+
+		$data['blogs'] = get_any_table_array(array('manager_id' => $this->user_id), 'blog');
+
+		$this->load->view('master-ui/main', $data);
+	}
+
+	function process_blog($id)
+	{
+		$data['content']      = 'manager/process_blog_post';
+		$data['add_script']   = 'manager/manager-script';
+		$data['menu']         = 'manager/manager-menu';
+
+		//$data['ref_city'] = get_ref_list(array('module' => 'city'), 'ref_code');
+
+		//$data['ref_state'] = get_ref_list(array('module' => 'state'), 'ref_code');
+
+		$data['blog'] = get_any_table_row(array('id' => $id), 'blog');
+
+		$data['users'] = get_any_table_row(array('id' => $data['blog']['create_by']), 'users');
+
+		$this->load->view('master-ui/main', $data);
+	}
+
+	function reject_blog($data=false)
+	{
+		$id = $this->input->post('id');
+
+		$update = update_any_table(array('status' => '2'), array('id' => $id) ,'blog');
+
+		if ($update == true) {
+			// code...
+			echo encode(array('status' => true, 'msg' => 'Blog post has been successfully rejected !'));
+		} else {
+			echo encode(array('status' => false, 'msg' => 'Failed !'));
+		}
+	}
+
+	function approve_blog($data=false)
+	{
+		$id = $this->input->post('id');
+
+		$update = update_any_table(array('status' => '1'), array('id' => $id) ,'blog');
+
+		if ($update == true) {
+			// code...
+			echo encode(array('status' => true, 'msg' => 'Blog post has been successfully approved and published !'));
+		} else {
+			echo encode(array('status' => false, 'msg' => 'Failed !'));
+		}
+	}
+
+	function centre_report($data=false)
+	{
+		$data['content']      = 'manager/centre_report';
+		$data['add_script']   = 'manager/manager-script';
+		$data['menu']         = 'manager/manager-menu';
+
+		//$data['ref_city'] = get_ref_list(array('module' => 'city'), 'ref_code');
+
+		//$data['ref_state'] = get_ref_list(array('module' => 'state'), 'ref_code');
+
+		$data['centres'] = get_any_table_array(array('owner_id' => $this->user_id), 'centre');
+
+		$this->load->view('master-ui/main', $data);
+	}
+
+	function report_details($id)
+	{
+		$data['content']      = 'manager/report_details';
+		$data['add_script']   = 'manager/manager-script';
+		$data['menu']         = 'manager/manager-menu';
+
+		$data['centre'] = get_any_table_row(array('id' => $id), 'centre');
+
+		$data['city'] = get_ref_desc($data['centre']['city'], 'city');
+		$data['state'] = get_ref_desc($data['centre']['state'], 'state');
+
+		$data['staffs'] = get_any_table_array(array('centre_id' => $id, 'status' => '1'), 'staff');
+
+		$data['events'] = get_any_table_array(array('centre_id' => $id), 'event');
+
+		$data['inventorys'] = get_any_table_array(array('centre_id' => $id), 'inventory');
+
+		$this->load->view('master-ui/main', $data);	
+	}
+
+	function view_event($data=false)
+	{
+		$id = $this->input->post('id');
+
+		$data['event'] = get_any_table_row(array('id' => $id), 'event');
+		// $data['staff'] = get_any_table_row(array('staff_id' => $id), 'staff');
+
+		// $data['city'] = get_ref_desc($data['centre']['city'], 'city');
+		// $data['state'] = get_ref_desc($data['centre']['state'], 'state');
+
+		$data['centre'] = get_any_table_row(array('id' => $data['event']['centre_id']), 'centre');
+
+		$data['users'] = get_any_table_row(array('id' => $data['event']['request_by']), 'users');
+
+
+
+		$this->load->view('manager/modal-view-event', $data);
 	}
 }

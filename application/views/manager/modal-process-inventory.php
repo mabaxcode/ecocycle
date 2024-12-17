@@ -4,11 +4,11 @@
 				<!--begin::Modal content-->
 				<div class="modal-content">
 					<!--begin::Form-->
-					<form class="form" action="#" id="complete_staff_regis_data_evt">
+					<form class="form" action="#" id="complete_staff_regis_data_inventory">
 						<!--begin::Modal header-->
 						<div class="modal-header" id="kt_modal_new_address_header">
 							<!--begin::Modal title-->
-							<h2>Event Approval Processing</h2>
+							<h2>Inventory Approval Processing</h2>
 							<!--end::Modal title-->
 							<!--begin::Close-->
 							<div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
@@ -30,31 +30,31 @@
 
 								<div class="row mb-7">
 						<!--begin::Label-->
-						<label class="col-lg-4 fw-semibold text-muted">Event Name</label>
+						<label class="col-lg-4 fw-semibold text-muted">Inventory Category</label>
 						<!--end::Label-->
 						<!--begin::Col-->
 						<div class="col-lg-8">
-							<span class="fw-bold fs-6 text-gray-800"><?=strtoupper($event['name'])?></span>
+							<span class="fw-bold fs-6 text-gray-800"><?=get_ref_desc($inventory['category'], 'inventory_category')?></span>
 						</div>
 						<!--end::Col-->
 					</div>
 					<div class="row mb-7">
 						<!--begin::Label-->
-						<label class="col-lg-4 fw-semibold text-muted">Location</label>
+						<label class="col-lg-4 fw-semibold text-muted">Inventory Name</label>
 						<!--end::Label-->
 						<!--begin::Col-->
 						<div class="col-lg-8">
-							<span class="fw-bold fs-6 text-gray-800"><?=$event['location']?></span>
+							<span class="fw-bold fs-6 text-gray-800"><?=$inventory['name']?></span>
 						</div>
 						<!--end::Col-->
 					</div>
 					<div class="row mb-7">
 						<!--begin::Label-->
-						<label class="col-lg-4 fw-semibold text-muted">Event Date Time</label>
+						<label class="col-lg-4 fw-semibold text-muted">Created Date</label>
 						<!--end::Label-->
 						<!--begin::Col-->
 						<div class="col-lg-8">
-							<span class="fw-bold fs-6 text-gray-800"><?=convert_date($event['event_dt'])?></span>
+							<span class="fw-bold fs-6 text-gray-800"><?=convert_date($inventory['create_dt'])?></span>
 						</div>
 						<!--end::Col-->
 					</div>
@@ -104,7 +104,7 @@
 									<!--begin::Input-->
 									<select name="decision" class="form-control">
 											<option value="">Please Select Decision</option>
-											<option value="1">Approve & Publish</option>
+											<option value="1">Approve</option>
 											<option value="2">Reject</option>
 										</select>
 									<!--end::Input-->
@@ -116,7 +116,7 @@
 							</div>
 							<!--end::Scroll-->
 						</div>
-						<input type="hidden" name="id" value="<?=$event['id']?>">
+						<input type="hidden" name="id" value="<?=$inventory['id']?>">
 						<!--end::Modal body-->
 						<!--begin::Modal footer-->
 						<div class="modal-footer flex-center">
@@ -124,8 +124,8 @@
 							<button type="reset" data-bs-dismiss="modal" class="btn btn-light me-3">Discard</button>
 							<!--end::Button-->
 							<!--begin::Button-->
-							<button type="submit" class="btn btn-primary btn-evt-process">
-								<span class="indicator-label">Register</span>
+							<button type="submit" class="btn btn-primary btn-invent-deci">
+								<span class="indicator-label">Proceed</span>
 								<span class="indicator-progress">Please wait... 
 								<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
 							</button>
@@ -141,7 +141,7 @@
 			<script type="text/javascript">
 	$( document ).ready(function() {
 
-        completeStaffRegisEvt('complete_staff_regis_data_evt');
+        completeStaffRegisInventory('complete_staff_regis_data_inventory');
 
     });
 </script>

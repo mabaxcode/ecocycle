@@ -18,7 +18,7 @@
 									</div>
 
 
-									<div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
+									<div data-kt-menu-trigger="click" class="menu-item <? if($this->uri->segment(2) == 'centre_registration'){ echo "here show"; } ?>" href="<?=base_url('manager/centre_registration')?> menu-accordion">
 										<!--begin:Menu link-->
 										<span class="menu-link">
 											<span class="menu-icon">
@@ -51,11 +51,14 @@
 									<!--end:Menu item-->
 									<!--begin:Menu item-->
 									
-									<div data-kt-menu-trigger="click" class="menu-item menu-accordion here show">
+									<div data-kt-menu-trigger="click" class="menu-item menu-accordion <? if($this->uri->segment(2) == 'registered_centre'){ echo "here show"; } ?>" href="<?=base_url('manager/registered_centre')?>">
 										<!--begin:Menu link-->
 										<span class="menu-link">
 											<span class="menu-icon">
-												<i class="ki-outline ki-briefcase fs-2"></i>
+												<i class="ki-duotone ki-bank fs-2">
+												 <span class="path1"></span>
+												 <span class="path2"></span>
+												</i>
 											</span>
 											<span class="menu-title">My Centres</span>
 											<span class="menu-arrow"></span>
@@ -81,11 +84,15 @@
 										<!--end:Menu sub-->
 									</div>
 
-									<div data-kt-menu-trigger="click" class="menu-item menu-accordion here show">
+									<div data-kt-menu-trigger="click" class="menu-item menu-accordion <? if($this->uri->segment(2) == 'staff_management' || $this->uri->segment(2) == 'registered_staff'){ echo "here show"; } ?>" href="<?=base_url('manager/staff_management')?>">
 										<!--begin:Menu link-->
 										<span class="menu-link">
 											<span class="menu-icon">
-												<i class="ki-outline ki-briefcase fs-2"></i>
+												<i class="ki-duotone ki-user-tick fs-2">
+												 <span class="path1"></span>
+												 <span class="path2"></span>
+												 <span class="path3"></span>
+												</i>
 											</span>
 											<span class="menu-title">Staff Management</span>
 											<span class="menu-arrow"></span>
@@ -121,11 +128,14 @@
 										<!--end:Menu sub-->
 									</div>
 
-									<div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
+									<div data-kt-menu-trigger="click" class="menu-item menu-accordion <? if($this->uri->segment(2) == 'inventory_submit' || $this->uri->segment(2) == 'event_submit' || $this->uri->segment(2) == 'blog_post'){ echo "here show"; } ?>" href="<?=base_url('manager/inventory_submit')?>">
 										<!--begin:Menu link-->
 										<span class="menu-link">
 											<span class="menu-icon">
-												<i class="ki-outline ki-home-2 fs-2"></i>
+												<i class="ki-duotone ki-questionnaire-tablet fs-2">
+												 <span class="path1"></span>
+												 <span class="path2"></span>
+												</i>
 											</span>
 											<span class="menu-title">Approval</span>
 											<span class="menu-arrow"></span>
@@ -136,7 +146,7 @@
 											<!--begin:Menu item-->
 											<div class="menu-item">
 												<!--begin:Menu link-->
-												<a class="menu-link" href="index.html">
+												<a class="menu-link <? if($this->uri->segment(2) == 'inventory_submit'){ echo "active"; } ?>" href="<?=base_url('manager/inventory_submit')?>">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -156,7 +166,7 @@
 											</div>
 											<div class="menu-item">
 												<!--begin:Menu link-->
-												<a class="menu-link" href="index.html">
+												<a class="menu-link <? if($this->uri->segment(2) == 'blog_post'){ echo "active"; } ?>" href="<?=base_url('manager/blog_post')?>">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -173,11 +183,14 @@
 								
 									<!--end:Menu item-->
 									<!--begin:Menu item-->
-									<div data-kt-menu-trigger="click" class="menu-item menu-accordion here show">
+									<div data-kt-menu-trigger="click" class="menu-item menu-accordion <? if($this->uri->segment(2) == 'centre_report'){ echo "here show"; } ?>" href="<?=base_url('manager/centre_report')?>">
 										<!--begin:Menu link-->
 										<span class="menu-link">
 											<span class="menu-icon">
-												<i class="ki-outline ki-briefcase fs-2"></i>
+												<i class="ki-duotone ki-document fs-2">
+												 <span class="path1"></span>
+												 <span class="path2"></span>
+												</i>
 											</span>
 											<span class="menu-title">Report</span>
 											<span class="menu-arrow"></span>
@@ -188,7 +201,7 @@
 											<!--begin:Menu item-->
 											<div class="menu-item">
 												<!--begin:Menu link-->
-												<a class="menu-link" href="https://preview.keenthemes.com/html/metronic/docs/base/utilities">
+												<a class="menu-link <? if($this->uri->segment(2) == 'centre_report'){ echo "active"; } ?>" href="<?=base_url('manager/centre_report')?>">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -203,6 +216,94 @@
 										<!--end:Menu sub-->
 									</div>
 									<!--end:Menu item-->
+									<br>
+									<div class="app-sidebar-menu-secondary menu menu-rounded menu-column px-3">
+									<!--begin::Heading-->
+									<div class="menu-item menu-labels">
+										<div class="menu-content d-flex flex-stack fw-bold text-gray-600 text-uppercase fs-7">
+											<span class="menu-heading ps-1">Overall</span>
+											<!--begin::Link-->
+											<a class="menu-btn ps-2" href="authentication/layouts/corporate/sign-in.html">
+												
+											</a>
+											<!--end::Link-->
+										</div>
+									</div>
+									<!--end::Heading-->
+									<!--begin::Separator-->
+									<div class="app-sidebar-separator separator mx-4 mt-2 mb-2"></div>
+									<!--end::Separator-->
+									<!--begin::Menu Item-->
+									<div class="menu-item">
+										<!--begin::Menu link-->
+										<a class="menu-link" href="apps/projects/project.html">
+											<!--begin::Bullet-->
+											<span class="menu-icon">
+												<i class="ki-outline ki-abstract-35 fs-2"></i>
+											</span>
+											<!--end::Bullet-->
+											<!--begin::Title-->
+											<span class="menu-title text-gray-700 fw-bold fs-6">Staff</span>
+											<!--end::Title-->
+											<!--begin::Badge-->
+											<!--end::Badge-->
+										</a>
+										<!--end::Menu link-->
+									</div>
+									<div class="menu-item">
+										<!--begin::Menu link-->
+										<a class="menu-link" href="apps/projects/project.html">
+											<!--begin::Bullet-->
+											<span class="menu-icon">
+												<i class="ki-outline ki-abstract-35 fs-2"></i>
+											</span>
+											<!--end::Bullet-->
+											<!--begin::Title-->
+											<span class="menu-title text-gray-700 fw-bold fs-6">Inventory</span>
+											<!--end::Title-->
+											<!--begin::Badge-->
+											<!--end::Badge-->
+										</a>
+										<!--end::Menu link-->
+									</div>
+									<!--end::Menu Item-->
+									<div class="menu-item">
+										<!--begin::Menu link-->
+										<a class="menu-link" href="apps/projects/project.html">
+											<!--begin::Bullet-->
+											<span class="menu-icon">
+												<i class="ki-outline ki-abstract-35 fs-2"></i>
+											</span>
+											<!--end::Bullet-->
+											<!--begin::Title-->
+											<span class="menu-title text-gray-700 fw-bold fs-6">Events</span>
+											<!--end::Title-->
+											<!--begin::Badge-->
+											<!--end::Badge-->
+										</a>
+										<!--end::Menu link-->
+									</div>
+									<!--begin::Menu Item-->
+									<div class="menu-item">
+										<!--begin::Menu link-->
+										<a class="menu-link" href="apps/projects/project.html">
+											<!--begin::Bullet-->
+											<span class="menu-icon">
+												<i class="ki-outline ki-abstract-35 fs-2"></i>
+											</span>
+											<!--end::Bullet-->
+											<!--begin::Title-->
+											<span class="menu-title text-gray-700 fw-bold fs-6">Blog Post</span>
+											<!--end::Title-->
+											<!--begin::Badge-->
+											<!--end::Badge-->
+										</a>
+										<!--end::Menu link-->
+									</div>
+									
+
+									<!--end::Menu Item-->
+								</div>
 								</div>
 								<!--end::Sidebar menu-->
 							</div>
