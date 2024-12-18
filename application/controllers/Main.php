@@ -22,8 +22,12 @@ class Main extends CI_Controller {
 
 
 	public function index()
-	{
-		$this->load->view('main');
+	{	
+
+		$data['events'] = get_any_table_array(array('status' => '1'), 'event');
+		$data['blogs'] = get_any_table_array(array('status' => '1'), 'blog');
+
+		$this->load->view('main', $data);
 	}
 
 	function login_page($data=false)
@@ -50,7 +54,7 @@ class Main extends CI_Controller {
 				'username'   => $data['username'],
 				'password' 	 => md5($data['password']),
 				'create_dt'  => current_date(),
-				'user_type'  => '1',
+				'user_type'  => $data['user_type'],
 				'status' 	 => '1',
 			);
 
@@ -99,8 +103,11 @@ class Main extends CI_Controller {
 				redirect('manager');
 			} elseif ($user_login['user_type'] == '2') {
 				redirect('staff');
-			} else {
+			} elseif ($user_login['user_type'] == '3') {
 				redirect('admin');
+			} 
+			else {
+				redirect('user');
 			}
 			
 			

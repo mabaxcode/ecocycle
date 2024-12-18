@@ -33,24 +33,15 @@
 											<!--begin:Menu item-->
 											<div class="menu-item">
 												<!--begin:Menu link-->
-												<a class="menu-link" href="index.html">
+												<a class="menu-link <? if($this->uri->segment(2) == 'centre_registration'){ echo "active"; } ?>" href="<?=base_url('admin/centre_registration')?>">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
-													<span class="menu-title">Manager</span>
+													<span class="menu-title">Recycling Centre</span>
 												</a>
 												<!--end:Menu link-->
 											</div>
-											<div class="menu-item">
-												<!--begin:Menu link-->
-												<a class="menu-link" href="index.html">
-													<span class="menu-bullet">
-														<span class="bullet bullet-dot"></span>
-													</span>
-													<span class="menu-title">Staff</span>
-												</a>
-												<!--end:Menu link-->
-											</div>
+											
 											<!--end:Menu item-->
 											<!--begin:Menu item-->
 											
@@ -82,7 +73,7 @@
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
-													<span class="menu-title">Impact Analysis (IA)</span>
+													<span class="menu-title">Centre Report</span>
 												</a>
 												<!--end:Menu link-->
 											</div>
@@ -94,7 +85,7 @@
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
-													<span class="menu-title">Volunteer Statistic</span>
+													<span class="menu-title">Volunteer</span>
 												</a>
 												<!--end:Menu link-->
 											</div>
@@ -125,7 +116,7 @@
 									<!--begin::Menu Item-->
 									<div class="menu-item">
 										<!--begin::Menu link-->
-										<a class="menu-link" href="apps/projects/project.html">
+										<a class="menu-link <? if($this->uri->segment(2) == 'setting_inventory'){ echo "active"; } ?>" href="<?=base_url('admin/setting_inventory')?>">
 											<!--begin::Bullet-->
 											<span class="menu-icon">
 												<i class="ki-outline ki-abstract-35 fs-2"></i>
@@ -143,7 +134,7 @@
 									<!--begin::Menu Item-->
 									<div class="menu-item">
 										<!--begin::Menu link-->
-										<a class="menu-link" href="apps/projects/project.html">
+										<a class="menu-link <? if($this->uri->segment(2) == 'setting_blog'){ echo "active"; } ?>" href="<?=base_url('admin/setting_blog')?>">
 											<!--begin::Bullet-->
 											<span class="menu-icon">
 												<i class="ki-outline ki-abstract-35 fs-2"></i>
@@ -159,7 +150,7 @@
 									</div>
 									<div class="menu-item">
 										<!--begin::Menu link-->
-										<a class="menu-link" href="apps/projects/project.html">
+										<a class="menu-link <? if($this->uri->segment(2) == 'system_config'){ echo "active"; } ?>" href="<?=base_url('admin/system_config')?>">
 											<!--begin::Bullet-->
 											<span class="menu-icon">
 												<i class="ki-outline ki-abstract-35 fs-2"></i>
