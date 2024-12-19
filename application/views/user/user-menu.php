@@ -31,6 +31,20 @@
 										</a>
 									</div>
 
+									<div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
+										<!--begin:Menu link-->
+										<a class="menu-link <? if($this->uri->segment(2) == 'participant_details'){ echo "active"; } ?>" href="<?=base_url('user/participant_details')?>">
+											<span class="menu-icon">
+												<i class="ki-duotone ki-user-tick fs-2">
+												 <span class="path1"></span>
+												 <span class="path2"></span>
+												 <span class="path3"></span>
+												</i>
+											</span>
+											<span class="menu-title">Event Participated</span>
+										</a>
+									</div>
+
 										<?/*
 									<div data-kt-menu-trigger="click" class="menu-item <? if($this->uri->segment(2) == 'add_inventory'){ echo "here show"; } ?>" href="<?=base_url('staff/add_inventory')?> menu-accordion">
 										<!--begin:Menu link-->
@@ -307,7 +321,7 @@
 											</span>
 											<!--end::Bullet-->
 											<!--begin::Title-->
-											<span class="menu-title text-gray-700 fw-bold fs-6">Events</span>
+											<span class="menu-title text-gray-700 fw-bold fs-6">Upcoming Events</span>
 											<!--end::Title-->
 											<!--begin::Badge-->
 											<!--end::Badge-->

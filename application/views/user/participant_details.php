@@ -243,6 +243,3 @@
 </div>
 <!--end::Content-->
 
-<script type="text/javascript">
-	// updateProfileDetails('kt_account_profile_details_form');
-</script>

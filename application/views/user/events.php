@@ -79,25 +79,19 @@
 													$centre = get_any_table_row(array('id' => $key['centre_id']), 'centre');
 													?>
 													<tr>
-														<td class="d-flex align-items-center">
-															<!--begin::User details-->
-															<div class="d-flex flex-column">
-																<a href="apps/user-management/users/view.html" class="text-gray-800 text-hover-primary mb-1"><?=strtoupper($key['name'])?></a>
-																<!-- <span>smith@kpmg.com</span> -->
-															</div>
-															<!--begin::User details-->
-														</td>
+														<td><?=strtoupper($key['name'])?></td>
 														<td><?=dmy($key['event_dt'])?></td>
 														<td><?=$key['location']?></td>
 														<td><?=$centre['name']?><br><span class="badge badge-primary">Volunteer Slots <?=$key['balance_slot']?></span></td>
 														<td>
-															<?=$key['justification']?>
+															<?//=$key['justification']?>
+															<?php echo substr($key['justification'], 0, '50') ?>...
 														</td>
 														<td class="text-end">
 															<? if($key['balance_slot'] == '0'){ ?>
 															<b><span class="text-danger">All Slots Taken</span></b>
 															<? } else { ?>
-															<a href="javascript:void(0);" class="btn btn-light btn-info btn-flex btn-center btn-sm" onclick="book_slot('<?=$key['id']?>')" data-init="<?=$key['id']?>">Register For This Event</a>
+															<a href="javascript:void(0);" class="btn btn-light btn-info btn-flex btn-center btn-sm" onclick="book_slot('<?=$key['id']?>')" data-init="<?=$key['id']?>">Join Event</a>
 															<? } ?>
 															
 															<!-- <a href="#" class="btn btn-light btn-danger btn-flex btn-center btn-sm" data-kt-menu-placement="bottom-end">Delete</a> -->

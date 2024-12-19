@@ -36,7 +36,7 @@ class User extends CI_Controller {
 	function participant_details($data=false)
 	{
 		$data['content']      = 'user/participant_details';
-		$data['add_script']   = 'user/user-script';
+		$data['add_script']   = 'user/participant-script';
 		$data['menu']         = 'user/user-menu';
 
 		$data['user'] = get_any_table_row(array('id' => $this->user_id), 'users');
@@ -136,6 +136,24 @@ class User extends CI_Controller {
 		// $data['state'] = get_ref_desc($data['centre']['state'], 'state');
 
 		$this->load->view('user/modal-booked-event', $data);	
+	}
+
+	function do_booked_event($data=false)
+	{	
+		$event_id = $this->input->post('id');
+
+		$joined_event = array('user_id' => $this->user_id, 'event_id' => $event_id, 'create_dt' => current_date() );
+
+		insert_any_table($joined_event, 'joined_event');
+
+		$event_data = get_any_table_row(array('id' => $id), 'event');
+
+		$current_balance = $event_data['balance_slot']; 
+
+		
+
+		echo encode(array('status' => true, 'msg' => 'Successfully joined !'));
+
 	}
 
 	
