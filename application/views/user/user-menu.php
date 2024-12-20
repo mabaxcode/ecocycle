@@ -344,26 +344,11 @@
 										</a>
 										<!--end::Menu link-->
 									</div>
-									<div class="menu-item">
-										<!--begin::Menu link-->
-										<a class="menu-link" href="apps/projects/project.html">
-											<!--begin::Bullet-->
-											<span class="menu-icon">
-												<i class="ki-outline ki-abstract-35 fs-2"></i>
-											</span>
-											<!--end::Bullet-->
-											<!--begin::Title-->
-											<span class="menu-title text-gray-700 fw-bold fs-6">Certificate</span>
-											<!--end::Title-->
-											<!--begin::Badge-->
-											<!--end::Badge-->
-										</a>
-										<!--end::Menu link-->
-									</div>
+									
 
 									<div class="menu-item">
 										<!--begin::Menu link-->
-										<a class="menu-link" href="apps/projects/project.html">
+										<a class="menu-link" href="<?=base_url('user/feedback')?>">
 											<!--begin::Bullet-->
 											<span class="menu-icon">
 												<i class="ki-outline ki-abstract-35 fs-2"></i>

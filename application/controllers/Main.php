@@ -7,14 +7,28 @@ class Main extends CI_Controller {
 	{
         parent::__construct();
 
-        // if ($this->session->userdata('user_id')) {
-        // 	if ($this->session->userdata('user_type') == '1') {
-        // 		redirect('app');
-        // 	} else {
-        // 		redirect('office');
-        // 	}
+        if ($this->session->userdata('user_id')) {
+        	if ($this->session->userdata('user_type') == '1') {
+        		redirect('manager');
+        	}
 
-        // }
+        	if ($this->session->userdata('user_type') == '2') {
+        		redirect('staff');
+        	} 
+
+        	if ($this->session->userdata('user_type') == '3') {
+        		redirect('admin');
+        	} 
+
+        	if ($this->session->userdata('user_type') == '4') {
+        		redirect('user');
+        	} 
+        	
+        	// else {
+        	// 	redirect('office');
+        	// }
+
+        }
 
         $this->load->model('Main_model', 'main');
         $this->users_table  = 'users';

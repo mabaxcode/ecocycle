@@ -7,13 +7,12 @@ class Manager extends CI_Controller {
 	{
         parent::__construct();
 
-        // if ($this->session->userdata('user_id')) {
-        // 	if ($this->session->userdata('user_type') == '1') {
-        // 		redirect('app');
-        // 	} else {
-        // 		redirect('office');
-        // 	}
-        // }
+        if ($this->session->userdata('user_id')) {
+        	if ($this->session->userdata('user_type') <> '1') {
+        		redirect();
+        	}
+        	
+        }
 
         $this->load->model('Manager_model', 'DbManager');
         // $this->users_table  = 'users';
@@ -25,6 +24,8 @@ class Manager extends CI_Controller {
 		$data['content']      = 'manager/manager-dashboard';
 		$data['add_script']   = 'manager/manager-script';
 		$data['menu']         = 'manager/manager-menu';
+
+		$data['user'] = get_any_table_row(array('id' => $this->user_id), 'users');
 
 		$this->load->view('master-ui/main', $data);
 	}

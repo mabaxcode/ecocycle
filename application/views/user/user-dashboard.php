@@ -61,11 +61,11 @@
 												<div class="card-body d-flex align-items-end mb-3">
 													<!--begin::Info-->
 													<div class="d-flex align-items-center">
-														<span class="fs-4hx text-white fw-bold me-6">1.2k</span>
-														<div class="fw-bold fs-6 text-white">
+														<span class="fs-4hx text-white fw-bold me-6"><?=$total_coming?></span>
+														<!-- <div class="fw-bold fs-6 text-white">
 															<span class="d-block">Inbound</span>
 															<span class="">Calls</span>
-														</div>
+														</div> -->
 													</div>
 													<!--end::Info-->
 												</div>
@@ -74,8 +74,8 @@
 												<div class="card-footer" style="border-top: 1px solid rgba(255, 255, 255, 0.3);background: rgba(0, 0, 0, 0.15);">
 													<!--begin::Progress-->
 													<div class="fw-bold text-white py-2">
-														<span class="fs-1 d-block">935</span>
-														<span class="opacity-50">Problems Solved</span>
+														<span class="fs-1 d-block"><?=$total_coming?></span>
+														<span class="opacity-50">Total Upcoming Events</span>
 													</div>
 													<!--end::Progress-->
 												</div>
@@ -101,11 +101,11 @@
 												<div class="card-body d-flex align-items-end mb-3">
 													<!--begin::Info-->
 													<div class="d-flex align-items-center">
-														<span class="fs-4hx text-white fw-bold me-6">427</span>
-														<div class="fw-bold fs-6 text-white">
+														<span class="fs-4hx text-white fw-bold me-6"><?=$total_invl?></span>
+														<!-- <div class="fw-bold fs-6 text-white">
 															<span class="d-block">Outbound</span>
 															<span class="">Calls</span>
-														</div>
+														</div> -->
 													</div>
 													<!--end::Info-->
 												</div>
@@ -114,8 +114,8 @@
 												<div class="card-footer" style="border-top: 1px solid rgba(255, 255, 255, 0.3);background: rgba(0, 0, 0, 0.15);">
 													<!--begin::Progress-->
 													<div class="fw-bold text-white py-2">
-														<span class="fs-1 d-block">386</span>
-														<span class="opacity-50">Generated Leads</span>
+														<span class="fs-1 d-block"><?=$total_invl?></span>
+														<span class="opacity-50">Total Events Participated</span>
 													</div>
 													<!--end::Progress-->
 												</div>

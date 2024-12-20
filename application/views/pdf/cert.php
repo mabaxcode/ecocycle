@@ -30,7 +30,7 @@
         <h1><?= $title ?></h1>
         <p>This certificate is proudly presented to</p>
         <h2><?= $name ?></h2>
-        <p>has successfully participated in the: <b><?=strtoupper($event_name)?></b></p>
+        <p>Has successfully participated in the <br> <b>Event : <?=strtoupper($event_name)?></b></p>
         <p>Held on <?= $date ?></p>
     </div>
 </body>

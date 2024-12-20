@@ -54,9 +54,12 @@
 							</div>
 							<!--end::Sidebar mobile toggle-->
 							<!--begin::Logo-->
-							<a href="index.html" class="app-sidebar-logo">
-								<img alt="Logo" src="<?=base_url()?>assets/media/logos/demo39.svg" class="h-25px theme-light-show" />
-								<img alt="Logo" src="<?=base_url()?>assets/media/logos/demo39-dark.svg" class="h-25px theme-dark-show" />
+							<a href="javascript:void(0);" class="app-sidebar-logo">
+								<?/*
+								<img alt="Logo" src="<?=base_url()?>assets/media/logos/eco-logo.png" class="h-25px theme-light-show" />
+								<img alt="Logo" src="<?=base_url()?>assets/media/logos/eco-logo.png" class="h-25px theme-dark-show" />
+								*/?>
+								<h1 class="page-heading d-flex flex-column justify-content-center text-gray-900 fw-bold fs-3 m-0"><font color="green">EcoCycle</font></h1>
 							</a>
 							<!--end::Logo-->
 						</div>
@@ -685,7 +688,7 @@
 							<div class="app-navbar-item ms-2 ms-lg-6" id="kt_header_user_menu_toggle">
 								<!--begin::Menu wrapper-->
 								<div class="cursor-pointer symbol symbol-circle symbol-30px symbol-lg-45px" data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-									<img src="<?=base_url()?>assets/media/avatars/300-2.jpg" alt="user" />
+									<img src="<?=base_url()?>assets/media/avatars/blank.png" alt="user" />
 								</div>
 								<!--begin::User account menu-->
 								<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-color fw-semibold py-4 fs-6 w-275px" data-kt-menu="true">
@@ -694,14 +697,15 @@
 										<div class="menu-content d-flex align-items-center px-3">
 											<!--begin::Avatar-->
 											<div class="symbol symbol-50px me-5">
-												<img alt="Logo" src="<?=base_url()?>assets/media/avatars/300-2.jpg" />
+												<img alt="Logo" src="<?=base_url()?>assets/media/avatars/blank.png" />
 											</div>
 											<!--end::Avatar-->
 											<!--begin::Username-->
 											<div class="d-flex flex-column">
-												<div class="fw-bold d-flex align-items-center fs-5">Max Smith 
-												<span class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">Pro</span></div>
-												<a href="#" class="fw-semibold text-muted text-hover-primary fs-7">max@kt.com</a>
+												<div class="fw-bold d-flex align-items-center fs-5"><?=$user['name']?>
+												<!-- <span class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">Pro</span> -->
+											</div>
+												<a href="#" class="fw-semibold text-muted text-hover-primary fs-7"><?=$user['email']?></a>
 											</div>
 											<!--end::Username-->
 										</div>
@@ -719,9 +723,11 @@
 									<!--begin::Menu item-->
 									<!--end::Menu item-->
 									<!--begin::Menu item-->
+									<?/*
 									<div class="menu-item px-5 my-1">
 										<a href="<?=base_url('main/account_setting')?>" class="menu-link px-5">Account Settings</a>
 									</div>
+									*/?>
 									<!--end::Menu item-->
 									<!--begin::Menu item-->
 									<div class="menu-item px-5">
@@ -736,7 +742,7 @@
 							<!--begin::Action-->
 							<div class="app-navbar-item ms-2 ms-lg-6 me-lg-6">
 								<!--begin::Link-->
-								<a href="authentication/layouts/corporate/sign-in.html" class="btn btn-icon btn-custom btn-color-gray-600 btn-active-color-primary w-35px h-35px w-md-40px h-md-40px">
+								<a href="<?=base_url('logout/log_out')?>" class="btn btn-icon btn-custom btn-color-gray-600 btn-active-color-primary w-35px h-35px w-md-40px h-md-40px">
 									<i class="ki-outline ki-exit-right fs-1"></i>
 								</a>
 								<!--end::Link-->
@@ -2478,7 +2484,7 @@
 									<div class="d-flex align-items-center">
 										<!--begin::Avatar-->
 										<div class="symbol symbol-35px symbol-circle">
-											<img alt="Pic" src="<?=base_url()?>assets/media/avatars/300-1.jpg" />
+											<img alt="Pic" src="<?=base_url()?>assets/media/avatars/blank.png" />
 										</div>
 										<!--end::Avatar-->
 										<!--begin::Details-->

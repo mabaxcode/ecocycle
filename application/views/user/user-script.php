@@ -156,5 +156,111 @@ $(document).on('click', '.proceed-booked', function (e) {
 
 });
 
+
+
+$(document).on('click', '.give-feedback', function (e) {
+
+    e.preventDefault();
+
+    var id = $(this).data('init');
+
+    Swal.fire({
+        icon: "info",
+      title: "Oops...",
+      text: "Sorry, Its look like you dont give any feedback yet for this event.",
+      // showDenyButton: true,
+      footer: 'Please give us your feedback first',
+      showCancelButton: true,
+      confirmButtonText: "Okay",
+      // denyButtonText: `Don't save`
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        // Swal.fire("Saved!", "", "success");
+
+        $.ajax({
+        url: base_url + 'user/feedback_modal',
+        type: "POST",
+        data: {id:id},
+        async: true,
+        success: function( response ){
+            $('#modal_complete_reg').html(response);
+            $('#modal_complete_reg').modal('show');
+        },
+        error: function(data){
+            // console.log(data);
+        },
+    });
+
+
+      } else if (result.isDenied) {
+        Swal.fire("Changes are not saved", "", "info");
+      }
+    });
+
+
+});
+
+
+$(document).on('click', '.save-feedback', function (e) {
+
+    e.preventDefault();
+
+    var id = $(this).data('init');
+
+    var feedback = $("#feedback").val();
+
+    if (feedback == '') {
+        Swal.fire({
+          text: "Feedback is required",
+          icon: "question"
+        });
+        return false;
+    }
+
+
+    $.ajax({
+        url: base_url + 'user/save_the_feedback',
+        type: "POST",
+        data: {id:id,feedback:feedback},
+        dataType: "json",
+        async: true,
+        success: function( response ) {
+            // console.log(response);
+            if (response.status == true) {
+                Swal.fire({
+                    text: response.msg,
+                    icon: "success",
+                    buttonsStyling: !1,
+                    confirmButtonText: "Ok, got it!",
+                    customClass: {
+                        confirmButton: "btn btn-primary"
+                    }
+                }).then((function(t) {
+                    if (t.isConfirmed) {
+                        $('#modal_complete_reg').modal('hide');
+                        location.reload();
+                    }
+                }))
+            } else {
+                Swal.fire({
+                    text: response.msg,
+                    icon: "error",
+                    buttonsStyling: !1,
+                    confirmButtonText: "Ok, got it!",
+                    customClass: {
+                        confirmButton: "btn btn-primary"
+                    }
+                })
+                return;
+            }
+        }
+    });
+
+
+
+
+});
+
 </script>
 

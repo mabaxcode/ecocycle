@@ -67,9 +67,10 @@
 														<th class="min-w-125px">Event Name</th>
 														<!-- <th class="min-w-125px">Event Date</th> -->
 														<th class="min-w-125px">Location</th>
-														<th class="min-w-125px">Recycling Centre</th>
-														<th class="min-w-125px">Description</th>
-														<th class="text-end min-w-100px">Status</th>
+														<th class="min-w-125px">Centre</th>
+														<!-- <th class="min-w-125px">Description</th> -->
+														<th class="min-w-100px">Status</th>
+														<th class="text-end min-w-100px">Certificate</th>
 													</tr>
 												</thead>
 												<tbody class="text-gray-600 fw-semibold">
@@ -85,24 +86,50 @@
 														
 														<td><?=$event['location']?></td>
 														<td><?=$centre['name']?></td>
+														<?/*
 														<td>
 															<?//=$key['justification']?>
 															<?php echo substr($event['justification'], 0, '50') ?>...
 														</td>
-														<td class="text-end">
+														*/?>
+														<td>
+
+															<? if($event['complete'] == '0'){ ?>
 
 															<? if($key['complete'] == 'N'){ ?>
 															<span class="badge badge-warning">Confirmed & Waiting For Check-In</span>
 															<? } else { ?>
-															<span class="badge badge-success">Joined ! and complete</span>
+															<span class="badge badge-info">Check-In</span>
+															<? } ?>
+
 															<? } ?>
 
 
+															<? if($event['complete'] == '1'){ ?>
+
+
+															<span class="badge badge-secondary">Event Finished</span>
+															<? } ?>
 													
 
 															
 															
 															<!-- <a href="#" class="btn btn-light btn-danger btn-flex btn-center btn-sm" data-kt-menu-placement="bottom-end">Delete</a> -->
+														</td>
+
+														<td class="text-end">
+															<? if($key['cert'] == '0'){ ?>
+															<span class="badge badge-danger">Not Check-In</span>
+															<? } else { ?>
+
+															<? if($key['feedback'] == '0'){ ?>
+															<a href="javascript:void(0);" class="btn btn-light btn-primary btn-flex btn-center btn-sm give-feedback" data-kt-menu-placement="bottom-end" data-init="<?=$key['id']?>">Certificate</a>
+															<? } else { ?>
+															<a href="<?=base_url('pdfController/generate_certificate/'.$key['id'])?>" target="_BLANK" class="btn btn-light btn-success btn-flex btn-center btn-sm" data-kt-menu-placement="bottom-end">Download Certificate</a>
+															<? } ?>
+
+														<? } ?>
+															
 														</td>
 													</tr>
 													<? } ?>

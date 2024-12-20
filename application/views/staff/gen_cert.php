@@ -68,7 +68,7 @@
 														<!-- <th class="min-w-125px">Event Date</th> -->
 														<th class="min-w-125px">Location</th>
 														<th class="min-w-125px">Recycling Centre</th>
-														<th class="min-w-125px">Total Volunteer & Participant</th>
+														<th class="min-w-125px">Total Participant</th>
 														<th class="text-end min-w-100px">Actions</th>
 													</tr>
 												</thead>
@@ -105,7 +105,7 @@
 																		 <span class="path1"></span>
 																		 <span class="path2"></span>
 																		 <span class="path3"></span>
-																		</i>Ready To Generate Certificate</a>
+																		</i>Generate Certificate</a>
 
 															<? } ?>
 

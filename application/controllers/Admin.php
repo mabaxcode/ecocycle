@@ -7,13 +7,12 @@ class Admin extends CI_Controller {
 	{
         parent::__construct();
 
-        // if ($this->session->userdata('user_id')) {
-        // 	if ($this->session->userdata('user_type') == '1') {
-        // 		redirect('app');
-        // 	} else {
-        // 		redirect('office');
-        // 	}
-        // }
+       	if ($this->session->userdata('user_id')) {
+        	if ($this->session->userdata('user_type') <> '3') {
+        		redirect();
+        	}
+        	
+        }
 
         // $this->load->model('App_model', 'DbApp');
         // $this->users_table  = 'users';
@@ -25,6 +24,8 @@ class Admin extends CI_Controller {
 		$data['content']      = 'admin/admin-dashboard';
 		$data['add_script']   = 'admin/admin-script';
 		$data['menu']         = 'admin/admin-menu';
+
+		$data['user'] = get_any_table_row(array('id' => $this->user_id), 'users');
 
 		$this->load->view('master-ui/main', $data);
 	}
