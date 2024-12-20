@@ -295,14 +295,46 @@
 									<!--begin::Menu Item-->
 									<div class="menu-item">
 										<!--begin::Menu link-->
-										<a class="menu-link" href="apps/projects/project.html">
+										<a class="menu-link" href="<?=base_url('staff/event_checkin')?>">
 											<!--begin::Bullet-->
 											<span class="menu-icon">
 												<i class="ki-outline ki-abstract-35 fs-2"></i>
 											</span>
 											<!--end::Bullet-->
 											<!--begin::Title-->
-											<span class="menu-title text-gray-700 fw-bold fs-6">Volunteer Slot</span>
+											<span class="menu-title text-gray-700 fw-bold fs-6">Event Check-In</span>
+											<!--end::Title-->
+											<!--begin::Badge-->
+											<!--end::Badge-->
+										</a>
+										<!--end::Menu link-->
+									</div>
+									<div class="menu-item">
+										<!--begin::Menu link-->
+										<a class="menu-link" href="<?=base_url('staff/gen_cert')?>">
+											<!--begin::Bullet-->
+											<span class="menu-icon">
+												<i class="ki-outline ki-abstract-35 fs-2"></i>
+											</span>
+											<!--end::Bullet-->
+											<!--begin::Title-->
+											<span class="menu-title text-gray-700 fw-bold fs-6">Generate Certificate</span>
+											<!--end::Title-->
+											<!--begin::Badge-->
+											<!--end::Badge-->
+										</a>
+										<!--end::Menu link-->
+									</div>
+									<div class="menu-item">
+										<!--begin::Menu link-->
+										<a class="menu-link" href="<?=base_url('staff/app_list')?>">
+											<!--begin::Bullet-->
+											<span class="menu-icon">
+												<i class="ki-outline ki-abstract-35 fs-2"></i>
+											</span>
+											<!--end::Bullet-->
+											<!--begin::Title-->
+											<span class="menu-title text-gray-700 fw-bold fs-6">Volunteer & Participant</span>
 											<!--end::Title-->
 											<!--begin::Badge-->
 											<!--end::Badge-->

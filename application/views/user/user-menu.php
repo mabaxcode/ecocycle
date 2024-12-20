@@ -33,14 +33,14 @@
 
 									<div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
 										<!--begin:Menu link-->
-										<a class="menu-link <? if($this->uri->segment(2) == 'participant_details'){ echo "active"; } ?>" href="<?=base_url('user/participant_details')?>">
+										<a class="menu-link <? if($this->uri->segment(2) == 'joined_event'){ echo "active"; } ?>" href="<?=base_url('user/joined_event')?>">
 											<span class="menu-icon">
-												<i class="ki-duotone ki-user-tick fs-2">
+												<i class="ki-duotone ki-pin fs-2">
 												 <span class="path1"></span>
 												 <span class="path2"></span>
-												 <span class="path3"></span>
 												</i>
 											</span>
+
 											<span class="menu-title">Event Participated</span>
 										</a>
 									</div>

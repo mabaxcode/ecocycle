@@ -142,18 +142,39 @@ class User extends CI_Controller {
 	{	
 		$event_id = $this->input->post('id');
 
-		$joined_event = array('user_id' => $this->user_id, 'event_id' => $event_id, 'create_dt' => current_date() );
+		$event_data = get_any_table_row(array('id' => $event_id), 'event');
+
+		$joined_event = array('user_id' => $this->user_id, 'event_id' => $event_id, 'complete' => 'N', 'create_dt' => current_date(), 'centre_id' => $event_data['centre_id'] );
 
 		insert_any_table($joined_event, 'joined_event');
 
-		$event_data = get_any_table_row(array('id' => $id), 'event');
+		
 
 		$current_balance = $event_data['balance_slot']; 
 
+		$new_balance = $current_balance - 1;
 		
+		update_any_table(array('balance_slot' => $new_balance), array('id' => $event_id), 'event');
 
 		echo encode(array('status' => true, 'msg' => 'Successfully joined !'));
 
+	}
+
+	function joined_event($data=false)
+	{
+		$data['content']      = 'user/joined_event';
+		$data['add_script']   = 'user/user-script';
+		$data['menu']         = 'user/user-menu';
+
+		//$data['ref_city'] = get_ref_list(array('module' => 'city'), 'ref_code');
+
+		//$data['ref_state'] = get_ref_list(array('module' => 'state'), 'ref_code');
+
+		$data['events'] = get_any_table_array(array('user_id' => $this->user_id ), 'joined_event');
+
+		$data['user'] = get_any_table_row(array('id' => $this->user_id), 'users');
+
+		$this->load->view('master-ui/main', $data);
 	}
 
 	

@@ -66,6 +66,16 @@
 						</div>
 						<!--end::Col-->
 					</div>
+					<div class="row mb-7">
+						<!--begin::Label-->
+						<label class="col-lg-4 fw-semibold text-muted">Available Slots</label>
+						<!--end::Label-->
+						<!--begin::Col-->
+						<div class="col-lg-8">
+							<span class="fw-bold fs-6 text-gray-800"><?=$event['balance_slot']?></span>
+						</div>
+						<!--end::Col-->
+					</div>
 					<!--end::Input group-->
 					<!--begin::Input group--> 
 					<div class="row mb-7">
@@ -121,7 +131,7 @@
 			<!--begin::Modal footer-->
 			<div class="modal-footer flex-center">
 				<!--begin::Button-->
-				<a class="btn btn-primary me-3 proceed-booked" data-init="<?=$key['id']?>">Proceed</a>
+				<a class="btn btn-primary me-3 proceed-booked" data-init="<?=$event['id']?>">Proceed</a>
 				<!--end::Button-->
 				<!--begin::Button-->
 				<!-- <button type="submit" id="kt_modal_new_address_submit" class="btn btn-primary">

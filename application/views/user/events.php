@@ -65,7 +65,7 @@
 												<thead>
 													<tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
 														<th class="min-w-125px">Event Name</th>
-														<th class="min-w-125px">Event Date</th>
+														<!-- <th class="min-w-125px">Event Date</th> -->
 														<th class="min-w-125px">Location</th>
 														<th class="min-w-125px">Recycling Centre</th>
 														<th class="min-w-125px">Description</th>
@@ -79,10 +79,10 @@
 													$centre = get_any_table_row(array('id' => $key['centre_id']), 'centre');
 													?>
 													<tr>
-														<td><?=strtoupper($key['name'])?></td>
-														<td><?=dmy($key['event_dt'])?></td>
+														<td><?=strtoupper($key['name'])?><br><span class="badge badge-primary">Date <?=dmy($key['event_dt'])?></span></td>
+														
 														<td><?=$key['location']?></td>
-														<td><?=$centre['name']?><br><span class="badge badge-primary">Volunteer Slots <?=$key['balance_slot']?></span></td>
+														<td><?=$centre['name']?><br><span class="badge badge-success">Available Slots <?=$key['balance_slot']?></span></td>
 														<td>
 															<?//=$key['justification']?>
 															<?php echo substr($key['justification'], 0, '50') ?>...
@@ -91,7 +91,22 @@
 															<? if($key['balance_slot'] == '0'){ ?>
 															<b><span class="text-danger">All Slots Taken</span></b>
 															<? } else { ?>
+
+															<?
+
+															$joined_event = get_any_table_row(array('user_id' => $user['id'], 'event_id' => $key['id']), 'joined_event');
+
+															if ($joined_event == true) {
+																echo '<b><span class="text-danger">Already Joined</span></b>';
+															} else { ?>
 															<a href="javascript:void(0);" class="btn btn-light btn-info btn-flex btn-center btn-sm" onclick="book_slot('<?=$key['id']?>')" data-init="<?=$key['id']?>">Join Event</a>
+															<? }
+															?>
+
+															
+
+
+
 															<? } ?>
 															
 															<!-- <a href="#" class="btn btn-light btn-danger btn-flex btn-center btn-sm" data-kt-menu-placement="bottom-end">Delete</a> -->
